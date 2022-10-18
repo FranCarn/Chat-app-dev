@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico:ital,wght@0,100;0,300;0,400;0,700;1,300&display=swap");
 
 * {
   color: whitesmoke;
@@ -6,20 +7,54 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  font-size: 18px;
 }
 
-#root,
+*::placeholder {
+  color: white;
+}
+
 body {
   background-color: #2e2e2e;
-  min-height: 100vh;
+  height: 100vh;
+  background: url(../public/pexels-tim-mossholder-3708459.jpg) center no-repeat;
+  background-size: cover;
+  overflow: hidden;
 }
+
+/* App */
+
+.title {
+  width: 400px;
+  margin: 100px auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: none;
+  outline: none;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.title > span {
+  font-family: "Pacifico", Courier, monospace;
+  font-size: 3rem;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+hr {
+  background-color: #f82d963d;
+  height: 2px;
+  margin: 10px 0px;
+  border: none;
+  width: 100%;
+}
+
+/* Login  */
 
 .login__container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background: url(../public/pexels-tim-mossholder-3708459.jpg) center no-repeat;
-  background-size: cover;
   justify-content: center;
   align-items: center;
   border: none;
@@ -35,18 +70,8 @@ body {
 }
 
 .login__container > input {
-  background-color: #ff006694;
-}
-
-*::placeholder {
-  color: white;
-}
-
-.login__container > div:first-of-type {
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: none;
-  outline: none;
-  border: 1px solid white;
+  background-color: #242424;
+  width: 290px;
 }
 
 .toggleButtons {
@@ -62,6 +87,7 @@ body {
   border-radius: 25px 25px 25px 25px;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: none;
+  margin-bottom: 30px;
 }
 
 .joinChat:hover {
@@ -73,9 +99,46 @@ body {
   cursor: pointer;
 }
 
+.active {
+  padding: 10px 18px;
+  margin: 0px 5px;
+  text-align: center;
+  border-radius: 40px;
+  color: white;
+  width: 140px;
+  border: 1px solid transparent;
+  background-color: #ff0066;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0px 0px 10px #ff0066, 0 0 40px #ff0066, 0 0 80px #ff0066;
+}
+
+.selectRoomButtons {
+  padding: 10px 18px;
+  text-align: center;
+  border-radius: 40px;
+  color: white;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 140px;
+  margin: 0px 5px;
+}
+
+.selectRoomButtons:hover {
+  border: 1px solid transparent;
+  background-color: #ff7b02;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: rgba(0, 0, 0);
+  box-shadow: 0px 0px 5px #ff0066, 0 0 14px #ff0066, 0 0 10px #ff0066;
+}
+
+/* Chat */
+
 .header__username__Info {
   padding: 10px;
   margin-bottom: 10px;
+  margin-top: -10px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -84,48 +147,6 @@ body {
   -webkit-box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
   -moz-box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
   box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
-}
-
-.chat__container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  box-sizing: content-box;
-  margin: 50px auto;
-  width: 50%;
-  text-align: center;
-}
-.chatToBottom {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #2e2e2e;
-}
-
-.send__message__container {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-  align-items: center;
-  margin: 15px auto;
-}
-
-.selectRoomButtons {
-  line-height: 100%;
-  padding: 10px 18px;
-  text-align: center;
-  border-radius: 40px;
-  color: white;
-  border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 140px;
-}
-.selectRoomButtons:hover {
-  border: 1px solid transparent;
-  background-color: #ff7b02;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0px 0px 10px #ff7b02, 0 0 40px #ff7b02, 0 0 80px #ff7b02;
 }
 
 .logout__button {
@@ -146,6 +167,31 @@ body {
   text-shadow: 1px 2px #c501e2;
 }
 
+.chat__container {
+  box-sizing: content-box;
+  margin: 10px auto;
+  width: 400px;
+  height: 300px;
+  text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.send__message__container {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  padding: 5px 0px;
+}
+
 .send__message__container input {
   outline: 0.5px solid #c501e2;
   border-radius: 1em;
@@ -153,29 +199,46 @@ body {
   border: none;
   font-size: 15px;
   height: 50px;
-  width: 500px;
+  width: 250px;
   text-indent: 5px;
   overflow-x: scroll;
   background-color: #ff00bb83;
 }
 
+.test {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message__metadata {
+  margin: 0px 10px;
+  font-size: 12px;
+}
+
 #other {
-  padding: 10px;
   text-align: start;
+}
+
+#other > * {
   color: #01c4e7;
 }
 
 #you {
-  padding: 10px;
   text-align: end;
+}
+
+#you > * {
   color: #ff0534;
 }
 
 .message {
   display: inline;
-  margin: 5px;
-  padding: 5px;
+  margin: 15px 10px;
+  padding: 10px 5px;
 }
+
 #you .message:hover {
   text-decoration: underline 1px solid #ff0534;
   cursor: pointer;
@@ -183,10 +246,6 @@ body {
 #other .message:hover {
   text-decoration: underline 1px solid #01c4e7;
   cursor: pointer;
-}
-.message__metadata {
-  color: grey;
-  font-size: small;
 }
 
 /* BUTTON TO SEND  */
@@ -283,9 +342,13 @@ body {
   }
 }
 
-hr {
-  background-color: #f82d963d;
-  height: 2px;
-  border: none;
-  width: 100%;
+@keyframes neon {
+  from {
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ff1177,
+      0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+      0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
+  }
 }

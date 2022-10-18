@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../App.module.css";
+import ScrollToBottom from "react-scroll-to-bottom";
 
-const Chat = ({
+export const Chat = ({
   socket,
   username,
   room,
@@ -51,33 +52,34 @@ const Chat = ({
           Logout
         </button>
       </div>
-      <div className={styles.chat__container} id={"chat__container"}>
+      <div className={styles.chat__container} id={styles.chat__container}>
         <div>{room === "" ? "Sala global" : `Sala: ${room}`}</div>
         <hr />
-        {`${username} ${
-          room === ""
-            ? "Ingresaste correctamente a la sala global"
-            : `Ingresaste correctamente a la sala: ${room}`
-        }`}
-        {allMessages.map((item) => {
-          return (
-            <div
-              className={styles.message__container}
-              id={username === item.user ? "you" : "other"}
-              key={item.id}
-            >
-              <div className={styles.message}>{item.message}</div>
-              <div className={styles.message__metadata}>
-                <small>
+        <div style={{ marginBottom: "10px" }}>
+          {`${username} ${
+            room === ""
+              ? "Ingresaste correctamente a la sala global"
+              : `Ingresaste correctamente a la sala: ${room}`
+          }`}
+        </div>
+        <ScrollToBottom className={styles.test}>
+          {allMessages.map((item) => {
+            return (
+              <div
+                className={styles.message__container}
+                id={username === item.user ? styles.you : styles.other}
+                key={item.id}
+              >
+                <div className={styles.message}>{item.message}</div>
+                <div className={styles.message__metadata}>
                   {item.user}. {item.time}
-                </small>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </ScrollToBottom>
       </div>
-      <div className={styles.chatToBottom}>
-        <hr />
+      <div className={styles.messageContainer}>
         <div className={styles.send__message__container}>
           <input
             type="text"
@@ -114,5 +116,3 @@ const Chat = ({
     </>
   );
 };
-
-export default Chat;
