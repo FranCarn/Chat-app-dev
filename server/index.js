@@ -21,6 +21,10 @@ io.on("connection", (socket) => {
     socket.to(messageData.room).emit("receivedMessage", messageData);
   });
 
+  socket.on("connectMessage", (messageData) => {
+    socket.to(messageData.room).emit("receivedMessage", messageData);
+  });
+
   socket.on("disconnect", () => {
     console.log(`Usuario ${socket.id} desconectado`);
   });
