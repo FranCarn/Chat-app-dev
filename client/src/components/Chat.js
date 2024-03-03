@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "../App.module.css";
 import ScrollToBottom from "react-scroll-to-bottom";
 
@@ -12,7 +12,7 @@ export const Chat = ({
 }) => {
   const [message, setMessage] = useState("");
   const [allMessages, setAllMessages] = useState([]);
-
+  const firstLoad = useRef(true);
   const sendMessage = async () => {
     if (!message) return;
     const messageData = {
@@ -29,6 +29,19 @@ export const Chat = ({
     setMessage("");
   };
 
+  const connectedMessage = async () => {
+    const messageData = {
+      room: room ? room : 1,
+      user: "Live Chat",
+      message: `${username} are connected to the room`,
+      time: `${new Date(Date.now()).getHours()}:${new Date(
+        Date.now()
+      ).getMinutes()}`,
+      id: new Date(Date.now()).getMilliseconds(),
+    };
+    await socket.emit("connectMessage", messageData);
+  };
+
   const logout = () => {
     setShowChat(false);
     setRoom("");
@@ -36,6 +49,11 @@ export const Chat = ({
   };
 
   useEffect(() => {
+    if (firstLoad.current) {
+      connectedMessage();
+      firstLoad.current = false;
+      return;
+    }
     socket.on("receivedMessage", (messageData) => {
       setAllMessages((prevState) => [...prevState, messageData]);
     });
@@ -43,6 +61,8 @@ export const Chat = ({
       socket.off("receivedMessage");
     };
   }, [socket]);
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -58,8 +78,8 @@ export const Chat = ({
         <div style={{ marginBottom: "10px" }}>
           {`${username} ${
             room === ""
-              ? "Ingresaste correctamente a la sala global"
-              : `Ingresaste correctamente a la sala: ${room}`
+              ? "You successfully entered the global room"
+              : `You entered to the room: ${room}`
           }`}
         </div>
         <ScrollToBottom className={styles.test}>
