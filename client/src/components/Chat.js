@@ -62,8 +62,6 @@ export const Chat = ({
     };
   }, [socket]);
 
-  useEffect(() => {}, []);
-
   return (
     <>
       <div className={styles.header__username__Info}>
