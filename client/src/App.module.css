@@ -239,15 +239,6 @@ hr {
   padding: 10px 5px;
 }
 
-#you .message:hover {
-  text-decoration: underline 1px solid #ff0534;
-  cursor: pointer;
-}
-#other .message:hover {
-  text-decoration: underline 1px solid #01c4e7;
-  cursor: pointer;
-}
-
 /* BUTTON TO SEND  */
 
 .send__btn {

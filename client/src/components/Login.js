@@ -41,7 +41,7 @@ export const Login = ({
     <div className={styles.login__container}>
       <input
         type="text"
-        placeholder="Ingrese su nombre"
+        placeholder="Enter your name"
         onChange={(e) => {
           setUsername(e.target.value);
         }}
@@ -57,7 +57,7 @@ export const Login = ({
         <input
           type="text"
           maxLength={4}
-          placeholder="ID de la sala"
+          placeholder="room ID"
           onChange={(e) => {
             setRoom(e.target.value);
           }}
@@ -87,7 +87,7 @@ export const Login = ({
         </button>
       </div>
       <button className={styles.joinChat} onClick={() => joinChat(room)}>
-        Ingresar a la sala
+        Enter room
       </button>
     </div>
   );

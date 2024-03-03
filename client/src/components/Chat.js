@@ -71,7 +71,7 @@ export const Chat = ({
         </button>
       </div>
       <div className={styles.chat__container} id={styles.chat__container}>
-        <div>{room === "" ? "Sala global" : `Sala: ${room}`}</div>
+        <div>{room === "" ? "Global room" : `Room: ${room}`}</div>
         <hr />
         <div style={{ marginBottom: "10px" }}>
           {`${username} ${
@@ -101,7 +101,7 @@ export const Chat = ({
         <div className={styles.send__message__container}>
           <input
             type="text"
-            placeholder="Escriba un mensaje..."
+            placeholder="Write a message..."
             onChange={(e) => {
               setMessage(e.target.value);
             }}
@@ -111,7 +111,7 @@ export const Chat = ({
             value={message}
           />
           <button className={styles.send__btn} onClick={sendMessage}>
-            <div className={styles.svg_wrapper - 1}>
+            <div className={styles.svg_wrapper}>
               <div className={styles.svg_wrapper}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ export const Chat = ({
                 </svg>
               </div>
             </div>
-            <span>Enviar</span>
+            <span>Send</span>
           </button>
         </div>
       </div>

@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <div className={styles.title}>
-        <span>ꞏ Live chat ꞏ</span>
+        <span>ꞏ Neon chat ꞏ</span>
         <hr />
         {!showChat ? (
           <Login
