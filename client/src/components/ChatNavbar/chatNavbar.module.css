@@ -1,0 +1,31 @@
+.header_username_info {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff0066ab;
+  -webkit-box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
+  -moz-box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
+  box-shadow: 0px 5px 32px -5px rgb(113, 77, 131);
+}
+
+.logout_button {
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  border-left: 1px solid #ff00bb;
+  padding: 4px 20px;
+}
+
+.logout_button:hover {
+  outline: none;
+  text-decoration: overline;
+  text-underline-position: below;
+  cursor: pointer;
+  color: #ff00bb;
+  text-shadow: 1px 2px #c501e2;
+}

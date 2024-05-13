@@ -1,0 +1,22 @@
+.send_message_container {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  padding-bottom: 20px;
+}
+
+.send_message_container input {
+  outline: 0.5px solid #c501e2;
+  border-radius: 1em;
+  color: whitesmoke;
+  border: none;
+  font-size: 15px;
+  height: 50px;
+  width: 250px;
+  text-indent: 5px;
+  overflow-x: scroll;
+  background-color: #ff00bb83;
+  text-indent: 10px;
+}

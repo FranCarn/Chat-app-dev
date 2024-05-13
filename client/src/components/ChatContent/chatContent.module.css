@@ -1,0 +1,28 @@
+.textScroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-inline: 10px;
+}
+
+.message_metadata {
+  margin: 0px 10px;
+  font-size: 12px;
+}
+
+#other {
+  text-align: start;
+}
+
+#other > * {
+  color: #01c4e7;
+}
+
+#you {
+  text-align: end;
+}
+
+#you > * {
+  color: #ff0534;
+}

@@ -1,44 +1,23 @@
-import React, { useState } from "react";
-import styles from "../App.module.css";
+import React, { useContext } from "react";
+import styles from "./login.module.css";
+import { ChatContext } from "../context/ChatContext";
 
-export const Login = ({
-  socket,
-  username,
-  room,
-  setShowChat,
-  setUsername,
-  setRoom,
-}) => {
-  const [showRoom, setShowRoom] = useState(false);
-  const [activeButton, setActiveButton] = useState({
-    global: true,
-    room: false,
-  });
+export const Login = () => {
+  const {
+    activeButton,
+    room,
+    showRoom,
+    username,
 
-  const joinChat = (roomId) => {
-    if (!username || roomId === "1") return;
-    const data = {
-      room: roomId ? roomId : 1,
-      global: roomId ? false : true,
-    };
-    socket.emit("join", data);
-    setShowChat(true);
-  };
-
-  const handleGlobal = () => {
-    if (activeButton.global) return;
-    setActiveButton({ global: true, room: false });
-    setShowRoom(false);
-  };
-
-  const handleRoom = () => {
-    if (!activeButton.global) return;
-    setActiveButton({ global: false, room: true });
-    setShowRoom(true);
-  };
+    handleGlobal,
+    handleRoom,
+    joinChat,
+    setRoom,
+    setUsername,
+  } = useContext(ChatContext);
 
   return (
-    <div className={styles.login__container}>
+    <div className={styles.login_container}>
       <input
         type="text"
         placeholder="Enter your name"
